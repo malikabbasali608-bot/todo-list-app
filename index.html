@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow | To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-app">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Productivity</p>
+            <h1>TaskFlow</h1>
+          </div>
+          <button id="clearCompletedBtn" class="secondary-button" type="button">
+            Clear completed
+          </button>
+        </header>
+
+        <form id="todoForm" class="todo-form" autocomplete="off">
+          <label class="sr-only" for="todoInput">Add a new task</label>
+          <input
+            id="todoInput"
+            name="todoInput"
+            type="text"
+            maxlength="160"
+            placeholder="Add a new task..."
+            aria-label="Add a new task"
+          />
+          <button type="submit" class="primary-button">Add task</button>
+        </form>
+
+        <div class="stats" aria-live="polite">
+          <div class="stat-card">
+            <span class="stat-label">Total</span>
+            <strong id="totalCount">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Remaining</span>
+            <strong id="remainingCount">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Completed</span>
+            <strong id="completedCount">0</strong>
+          </div>
+        </div>
+
+        <div class="filter-bar" aria-label="Task filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="active">Active</button>
+          <button class="filter-button" type="button" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="taskList" class="task-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <li class="task-item">
+        <div class="task-main">
+          <input class="task-checkbox" type="checkbox" aria-label="Mark task complete" />
+          <div class="task-copy">
+            <span class="task-text"></span>
+            <small class="task-meta"></small>
+          </div>
+        </div>
+
+        <div class="task-actions">
+          <button class="action-button edit-button" type="button">Edit</button>
+          <button class="action-button delete-button" type="button">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
